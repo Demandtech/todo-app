@@ -171,6 +171,14 @@ main {
  color: var(--text-secondary);
 }
 
+.checker img{
+ display: none;
+}
+
+.completed .checker img{
+ display: block
+}
+
 @media screen and (min-width: 600px) {
   header {
     background: var(--desktop-img-bg);
