@@ -1,36 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-wrapper">
+          <p class="logo">TODO</p>
+          <button class="toggle-theme">
+            <img class="toggle-img" src="./images/icon-moon.svg" alt="moon" />
+          </button>
+        </div>
+        <form class="form">
+          <input
+            type="text"
+            name="todo"
+            id="todo"
+            placeholder="Create New Todo"
+          />
+          <div class="circle"></div>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="main-container">
+        <ul class="todo-list">
+           <li class="todo">
+             <div class="checked"></div>
+             <div class="todo-text">Learn Backend Development</div>
+             <button class="close-btn">
+               <img src="./images/icon-cross.svg" alt="close-icon">
+             </button>
+           </li>          
+        </ul>
+        <div class="todo-footer">
+          <span>Item Left</span>
+          <div class="todo-footer-center">
+            <button>All</button>
+            <button>Active</button>
+            <button>Completed</button>
+          </div>
 
-  Todo
-
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+          <button>Clear Completed</button>
+        </div>
+        <div class="todo-footer-md">
+          <div class="todo-footer-md-center">
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+        </div>
+        </div>
+      </div>
+    </main>
+    <!-- Drag and drop to
+    reorder list -->
+    <script src="./app.js"></script>
+  </body>
 </html>
