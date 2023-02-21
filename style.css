@@ -75,7 +75,7 @@ header {
   width: 100%;
   font-size: 16px;
   height: 100%;
-  padding-left: 50px;
+  padding-left: 60px;
   border-radius: 5px;
   border: none;
 }
@@ -87,7 +87,7 @@ header {
 .todo-footer {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background: var(--bg-secondary);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -115,7 +115,7 @@ header {
   align-items: center;
   gap: 20px;
   background: var(--bg-secondary);
-  padding: 10px 0;
+  padding: 15px 0;
   border-radius: 4px;
   margin-top: 20px;
   border-radius: 5px;
@@ -131,12 +131,13 @@ main {
   border-top-right-radius: 5px;
 }
 
-.checked {
+.checker {
   width: 20px;
   height: 20px;
   border: 1px solid var(--text-secondary);
   border-radius: 50%;
-  background: url(./images/icon-check.svg) no-repeat center;
+  display: grid;
+  place-content: center;
 }
 
 .todo {
@@ -145,7 +146,7 @@ main {
   gap: 20px;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--text-secondary);
-  padding: 10px 20px;
+  padding: 15px 20px;
   color: var(--text-primary);
   font-size: 14px;
 }
@@ -153,6 +154,21 @@ main {
 .close-btn {
   all: unset;
   margin-left: auto;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.todo:hover .close-btn{
+ opacity: 1;
+}
+
+.completed .checker{
+ background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.completed .todo-text{
+ text-decoration: line-through;
+ color: var(--text-secondary);
 }
 
 @media screen and (min-width: 600px) {
