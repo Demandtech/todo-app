@@ -15,36 +15,36 @@ const list = document.getElementById('list')
 
 //Placeholder
 let todos = [
-  {
-    text: 'Complete online javaScript course',
-    isCompleted: true,
-    id: '111',
-  },
-  {
-    text: 'Jog around the park 3x',
-    isCompleted: false,
-    id: '222',
-  },
-  {
-    text: '10 minutes meditation',
-    isCompleted: false,
-    id: '333',
-  },
-  {
-    text: 'Read for 1 hour',
-    isCompleted: false,
-    id: '444',
-  },
-  {
-    text: 'Pick up groceries',
-    isCompleted: false,
-    id: '555',
-  },
-  {
-    text: 'Complete Todo App on Frontend Mentor',
-    isCompleted: false,
-    id: '666',
-  },
+  // {
+  //   text: 'Complete online javaScript course',
+  //   isCompleted: true,
+  //   id: '111',
+  // },
+  // {
+  //   text: 'Jog around the park 3x',
+  //   isCompleted: false,
+  //   id: '222',
+  // },
+  // {
+  //   text: '10 minutes meditation',
+  //   isCompleted: false,
+  //   id: '333',
+  // },
+  // {
+  //   text: 'Read for 1 hour',
+  //   isCompleted: false,
+  //   id: '444',
+  // },
+  // {
+  //   text: 'Pick up groceries',
+  //   isCompleted: false,
+  //   id: '555',
+  // },
+  // {
+  //   text: 'Complete Todo App on Frontend Mentor',
+  //   isCompleted: false,
+  //   id: '666',
+  // },
 ]
 
 

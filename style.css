@@ -1,5 +1,5 @@
  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
- 
+
 *,
 ::after,
 ::before {
@@ -33,6 +33,7 @@
 body {
   background: var(--bg-primary);
   font-size: 18px;
+  font-family: 'Josefin Sans';
 }
 
 header {
