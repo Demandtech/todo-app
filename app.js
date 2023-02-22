@@ -1,3 +1,4 @@
+"use strict"
 const themeToggleBtn = document.querySelector('.toggle-theme')
 const html = document.querySelector('html')
 const toggleImg = document.querySelector('.toggle-img')
@@ -10,6 +11,9 @@ const itemLeftEl = document.querySelector('.items-left')
 const controleBtn = document.querySelectorAll('.btn')
 const active = document.querySelector('.active')
 const clearBtn = document.querySelector('.clear-btn')
+const list = document.getElementById('list')
+
+let dragStartIndex;
 
 //Placeholder
 let todos = [
@@ -71,7 +75,7 @@ themeToggleBtn.addEventListener('click', () => {
    localStorage.setItem('theme', selectedTheme)
 })
 
-
+let dataIndex =  0;
 
 //render function
 const renderList = (arr) => {
@@ -81,8 +85,8 @@ const renderList = (arr) => {
   todosToRender.forEach((todo) => {
     todoList.innerHTML += `
      <li id="${todo.id}" class="${
-      todo.isCompleted ? 'todo completed' : 'todo'
-    }">
+      todo.isCompleted ? 'todo completed draggable' : 'todo draggable'
+    }" draggable="true" data-index= ${dataIndex++}>
          <div class="checker" id="${todo.id}">
          <img src="./images/icon-check.svg"> 
          </div>
@@ -218,4 +222,41 @@ document.addEventListener('click', removeTodo)
 const hideClosebtn = ()=> {
  let removeds = document.querySelectorAll('.close-btn')
  removeds.forEach((i) => (i.style.display = 'none'))
+}
+
+
+const li = document.querySelectorAll('li')
+
+li.forEach(draggable=> {
+ draggable.addEventListener('dragstart', ()=>{
+  draggable.classList.add('dragging')
+ })
+
+ draggable.addEventListener('dragend', ()=> {
+  draggable.classList.remove('dragging')
+ })
+})
+
+list.addEventListener('dragover', e => {
+ e.preventDefault()
+ const afterElement = getDragAfterElement(list, e.clientY)
+ const draggable = document.querySelector('.dragging');
+ if(afterElement === null){
+  list.appendChild(draggable)
+ }else {
+  list.insertBefore(draggable, afterElement)
+ }
+})
+
+const getDragAfterElement = (container, y)=> {
+ const draggableElent =  [...container.querySelectorAll('.draggable:not(.dragging)')]
+ return draggableElent.reduce((closest, child)=>{
+  const box = child.getBoundingClientRect()
+  const offset = y - box.top - box.height / 2
+  if(offset < 0 && offset > closest.offset){
+   return {offset:offset, element:child}
+  }else{
+   return closest
+  }
+ }, {offset: Number.NEGATIVE_INFINITY}).element
 }

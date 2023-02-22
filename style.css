@@ -125,6 +125,10 @@ main {
   font-size: 18px;
 }
 
+.todo.dragging{
+ opacity: 0.5
+}
+
 .todo:first-child {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
