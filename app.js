@@ -5,6 +5,7 @@ const todoList = document.querySelector('.todo-list')
 const todoVal = document.querySelector('.todo-val')
 const form = document.querySelector('.form')
 const checker = document.querySelector('.checker')
+const controller = document.querySelector('.todo-footer')
 
 themeToggleBtn.addEventListener('click', () => {
   html.classList.toggle('dark-theme')
@@ -16,7 +17,7 @@ themeToggleBtn.addEventListener('click', () => {
   }
 })
 
-const todos = [
+let todos = [
   {
     text: 'Complete Online Javascript Course',
     isCompleted: true,
@@ -38,31 +39,34 @@ const todos = [
     id: '4',
   },
   {
-    text: 'pickup groceries',
+    text: 'Pickup groceries',
     isCompleted: false,
     id: '5',
   },
   {
     text: 'Complete todo app on frontend mentor',
     isCompleted: false,
-    id: '6'
+    id: '6',
   },
 ]
 
-const renderList = () => {
+const renderList = (arr) => {
+  const todosToRender = arr || todos
   todoList.innerHTML = ''
 
-  todos.forEach((todo) => {
+  todosToRender.forEach((todo) => {
     todoList.innerHTML += `
-   <li id="${todo.id}" class="${todo.isCompleted ? 'todo completed' : 'todo'}">
-       <div class="checker" id="${todo.id}">
-       <img src="./images/icon-check.svg"> 
-       </div>
-       <div class="todo-text">${todo.text}</div>
-       <button class="close-btn">
-         <img src="./images/icon-cross.svg" alt="close-icon">
-       </button>
-   </li>
+     <li id="${todo.id}" class="${
+      todo.isCompleted ? 'todo completed' : 'todo'
+    }">
+         <div class="checker" id="${todo.id}">
+         <img src="./images/icon-check.svg"> 
+         </div>
+         <div class="todo-text">${todo.text}</div>
+         <button class="close-btn">
+           <img src="./images/icon-cross.svg" alt="close-icon">
+         </button>
+     </li>
  `
   })
 }
@@ -80,22 +84,48 @@ form.addEventListener('submit', (e) => {
   } else {
     return
   }
-  renderList()
   todoVal.value = ' '
+  renderList()
 })
 
-document.addEventListener('click', (e) => {
-  const target = e.target.closest('.checker')
-  if(target){
-     todos.map(todo=> {
-      if(todo.id === target.id){
-         if(todo.isCompleted === true){
-          todo.isCompleted = false
-         }else{
-          todo.isCompleted = true
-         }
-      }
-     })
+const AddCompleted = () => {
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('.checker')
+    if (target) {
+      todos.map((todo) => {
+        if (todo.id === target.id) {
+          if (todo.isCompleted === true) {
+            todo.isCompleted = false
+          } else {
+            todo.isCompleted = true
+          }
+        }
+      })
+      renderList()
+    }
+  })
+}
+
+AddCompleted()
+
+controller.addEventListener('click', (e) => {
+  const allBtn = e.target.closest('.all-btn')
+  const activeBtn = e.target.closest('.active-btn')
+  const completedBtn = e.target.closest('.completed-btn')
+  const clearCompleted = e.target.closest('.clear-completed-btn')
+
+  
+  if (activeBtn) {
+    removeEventListener('click', AddCompleted)
+   const activeTodos = todos.filter((todo) => !todo.isCompleted)
+    renderList(activeTodos)
+  } else if (completedBtn) {
+    removeEventListener('click', AddCompleted)
+    const completedTodos = todos.filter((todo) => todo.isCompleted)
+    renderList(completedTodos)
+  } else if (allBtn){ renderList()}
+  else if (clearCompleted){
+    todos = todos.filter(todo=> !todo.isCompleted)
+    renderList(todos)
   }
-  renderList()
- })
+})

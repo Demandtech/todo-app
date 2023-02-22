@@ -84,43 +84,6 @@ header {
   color: var(--text-secondary);
 }
 
-.todo-footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-  background: var(--bg-secondary);
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.todo-footer button,
-.todo-footer-md-center button {
-  all: unset;
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.todo-footer span {
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.todo-footer-center {
-  display: none;
-}
-
-.todo-footer-md-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: var(--bg-secondary);
-  padding: 15px 0;
-  border-radius: 4px;
-  margin-top: 20px;
-  border-radius: 5px;
-}
-
 main {
   padding: 0 25px;
   margin-top: -55px;
@@ -158,25 +121,66 @@ main {
   cursor: pointer;
 }
 
-.todo:hover .close-btn{
- opacity: 1;
+.todo:hover .close-btn {
+  opacity: 1;
 }
 
-.completed .checker{
- background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+.completed .checker {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-.completed .todo-text{
- text-decoration: line-through;
- color: var(--text-secondary);
+
+.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  
 }
 
-.checker img{
- display: none;
+.checker img {
+  display: none;
 }
 
-.completed .checker img{
- display: block
+.completed .checker img {
+  display: block;
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: relative;
+}
+
+.todo-footer button {
+  all: unset;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: .5s;
+}
+
+.todo-footer button:hover{
+ color: hsl(220, 98%, 61%);
+ cursor: pointer;
+}
+
+.todo-footer span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.controllers {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: absolute;
+  bottom: -60px;
+  background: var(--bg-secondary);
+  left: 0;
+  right: 0;
+  padding: 15px;
 }
 
 @media screen and (min-width: 600px) {
@@ -190,11 +194,13 @@ main {
     margin: 0 auto;
   }
 
-  .todo-footer-md-center {
-    display: none;
-  }
-  .todo-footer-center {
+  .controllers {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
+    position: initial;
+    bottom: 0;
+    background: var(--bg-secondary);
+    padding: 0;
   }
 }
