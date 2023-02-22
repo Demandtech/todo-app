@@ -6,10 +6,10 @@
   box-sizing: border-box;
   font-family: 'Josefin Sans';
 }
-:root {
+.light-theme {
   --bg-primary: hsl(0, 0%, 98%);
   --bg-secondary: hsl(100, 100%, 100%);
-  --secondary: hsl(236, 33%, 92%);
+  --secondary: hsl(235, 19%, 35%);
   --text-primary: hsl(235, 19%, 35%);
   --text-secondary: hsl(233, 11%, 84%);
   --DarkGrayishBlue: hsl(236, 9%, 61%);
@@ -20,30 +20,30 @@
 .dark-theme {
   --bg-primary: hsl(235, 21%, 11%);
   --bg-secondary: hsl(235, 24%, 19%);
-  --text-primary: hsl(236, 33%, 92%);
-  --text-secondary: hsl(234, 39%, 85%);
+  --text-secondary: hsl(234, 11%, 52%);
+  --text-primary: hsl(234, 39%, 85%);
   --desktop-img-bg: url(./images/bg-desktop-dark.jpg);
   --mobile-img-bg: url(./images/bg-mobile-dark.jpg);
   --DarkGrayishBlue: hsl(234, 11%, 52%);
   --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
-  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
 
 body {
   background: var(--bg-primary);
+  font-size: 18px;
 }
 
 header {
   min-height: 200px;
   background: var(--mobile-img-bg);
   background-size: cover;
-  padding: 30px 25px;
+  padding: 50px 25px 30px 25px;
 }
 
 .header-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .logo {
@@ -57,7 +57,8 @@ header {
 
 .form {
   position: relative;
-  height: 40px;
+  height: 50px;
+  margin-bottom: 50px;
 }
 
 .circle {
@@ -73,15 +74,18 @@ header {
 
 .form input {
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
   height: 100%;
   padding-left: 60px;
   border-radius: 5px;
   border: none;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .form input::placeholder {
   color: var(--text-secondary);
+  font-size: 18px;
 }
 
 main {
@@ -101,6 +105,12 @@ main {
   border-radius: 50%;
   display: grid;
   place-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.checker:hover {
+  border-color: hsl(192, 100%, 67%);
 }
 
 .todo {
@@ -112,6 +122,12 @@ main {
   padding: 15px 20px;
   color: var(--text-primary);
   font-size: 14px;
+  font-size: 18px;
+}
+
+.todo:first-child {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .close-btn {
@@ -125,15 +141,20 @@ main {
   opacity: 1;
 }
 
+.drag {
+  margin-top: 100px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
 .completed .checker {
   background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
-
 .completed .todo-text {
   text-decoration: line-through;
   color: var(--text-secondary);
-  
 }
 
 .checker img {
@@ -154,33 +175,42 @@ main {
   position: relative;
 }
 
-.todo-footer button {
-  all: unset;
-  font-size: 14px;
+.btn,
+.clear-btn {
+  font-size: 15px;
   color: var(--text-secondary);
-  transition: .5s;
+  transition: 0.5s;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 900;
 }
 
-.todo-footer button:hover{
- color: hsl(220, 98%, 61%);
- cursor: pointer;
+.btn:hover,
+.clear-btn:hover {
+  color: hsl(220, 98%, 61%);
 }
 
 .todo-footer span {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
+  font-weight: 900;
 }
 
 .controllers {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   position: absolute;
   bottom: -60px;
   background: var(--bg-secondary);
   left: 0;
   right: 0;
   padding: 15px;
+}
+
+.active {
+  color: hsl(220, 98%, 61%);
 }
 
 @media screen and (min-width: 600px) {
@@ -202,5 +232,9 @@ main {
     bottom: 0;
     background: var(--bg-secondary);
     padding: 0;
+  }
+
+  .drag {
+    margin-top: 40px;
   }
 }
