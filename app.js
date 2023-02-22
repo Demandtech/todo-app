@@ -13,8 +13,6 @@ const active = document.querySelector('.active')
 const clearBtn = document.querySelector('.clear-btn')
 const list = document.getElementById('list')
 
-let dragStartIndex;
-
 //Placeholder
 let todos = [
   {
@@ -51,8 +49,8 @@ let todos = [
 
 
 //Todos Storage
-if(localStorage.getItem('todos')){
-  todos = JSON.parse(localStorage.getItem('todos'))
+if(localStorage.getItem('myTodos')){
+  todos = JSON.parse(localStorage.getItem('myTodos'))
 }
 //theme storage
 const theme = localStorage.getItem('theme') || 'light-theme'
@@ -86,10 +84,10 @@ const renderList = (arr) => {
     todoList.innerHTML += `
      <li id="${todo.id}" class="${
       todo.isCompleted ? 'todo completed draggable' : 'todo draggable'
-    }" draggable="true" data-index= ${dataIndex++}>
-         <div class="checker" id="${todo.id}">
+    }" draggable="true" >
+         <button class="checker" id="${todo.id}">
          <img src="./images/icon-check.svg"> 
-         </div>
+         </button>
          <div class="todo-text">${todo.text}</div>
          <button class="close-btn">
            <img src="./images/icon-cross.svg" alt="close-icon">
@@ -103,7 +101,7 @@ renderList()
 
 //function to get todos from local storage
 const getTodos = ()=> {
-  localStorage.setItem('todos', JSON.stringify(todos))
+  localStorage.setItem('myTodos', JSON.stringify(todos))
 }
 
 
@@ -225,6 +223,9 @@ const hideClosebtn = ()=> {
 }
 
 
+
+
+//Draggable Functions
 const li = document.querySelectorAll('li')
 
 li.forEach(draggable=> {
