@@ -109,14 +109,15 @@ const getTodos = ()=> {
 //Onsubmit to add items to array and render
 form.addEventListener('submit', (e) => {
   e.preventDefault()
-  if (todoVal.value) {
+  const value = todoVal.value
+ if(value.trim()==='') return
+  if (value) {
+    console.log(value)
     todos.unshift({
       text: todoVal.value,
       isCompleted: false,
       id: new Date().getTime().toString().slice(-4, -1),
     })
-  } else {
-    return
   }
   todoVal.value = ' '
   renderList()
